@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -200,5 +201,15 @@ public class VideoAdActivity extends PermissionActivity{
 
         }).launchVideo(videoContainer,"-1","-1",0);
 
+    }
+
+    /** 需要监听用户对返回按钮的控制，并且销毁视频广告实例 */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
+            VideoEngine.getInstance(VideoAdActivity.this).onDestory();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
