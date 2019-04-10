@@ -151,7 +151,7 @@ public class YunkeVideoView extends RelativeLayout {
                     nativeContainer.getHolder().addCallback(new SurfaceHolder.Callback() {
                         @Override
                         public void surfaceCreated(SurfaceHolder holder) {
-                            ijkMediaPlayer.setDisplay(holder);
+//                            ijkMediaPlayer.setDisplay(holder);
                         }
 
                         @Override
