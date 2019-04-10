@@ -170,6 +170,7 @@ public class YunkeVideoView extends RelativeLayout {
                     nativeClose.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            stop();
                             container.removeAllViews();
                             videoViewCallBack.onAdCancel(YunkeVideoView.this);
                         }
