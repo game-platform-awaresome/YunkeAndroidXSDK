@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_native"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="0.8"
+            android:id="@+id/tv_native_ad_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@string/title_activity_native_template"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/img_native_dislike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/yunke_dislike_icon" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/iv_native_fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_native">
+
+        <ImageView
+            android:id="@+id/iv_native_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/yunke_ic_default_image"/>
+
+        <TextView
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/ad_view_desc"
+            android:textSize="10sp"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:background="@drawable/yunke_common_black_view"
+            android:layout_gravity="center_vertical|bottom|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/tv_source_desc_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_below="@id/iv_native_fl"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/iv_native_icon"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/iv_native_image"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/yunke_ic_default_image" />
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/tv_native_ad_desc"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:gravity="center_vertical"
+            android:ellipsize="end"
+            android:singleLine="false"
+            android:text="@string/title_activity_native_template"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_weight="0.2"
+            android:id="@+id/btn_native_create"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_height="20dp"
+            android:textColor="@color/actionsheet_blue"
+            android:background="@drawable/yunke_common_blue_button"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

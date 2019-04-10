@@ -1,0 +1,135 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
+//apply plugin: 'com.didi.virtualapk.plugin'
+apply from: '../app/dependencies.gradle'
+
+android {
+    compileSdkVersion androidVersion.compileSdk
+    buildToolsVersion androidVersion.buildTools
+    defaultConfig {
+        applicationId androidVersion.applicationId
+        minSdkVersion androidVersion.minSdk
+        targetSdkVersion androidVersion.targetSdk
+        versionCode androidVersion.publishVersionCode
+        versionName androidVersion.publishVersionName
+        multiDexEnabled true
+        splits {//只打包腾讯、头条so库架构相同的类型
+            abi {
+                enable true
+                reset()
+                include 'armeabi-v7a','arm64-v8a','x86_64','x86'
+                universalApk false
+            }
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    signingConfigs {
+        release {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(RELEASE_STOREFILE)
+            storePassword RELEASE_STORE_PASSWORD
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            shrinkResources false//动态获取到的资源id会删除，设置true时 需要确保资源引用的问题
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled true
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+//    applicationVariants.all { variant ->
+//        variant.outputs.all { output ->
+//            outputFileName = "${variant.applicationId}_${variant.versionName}.apk"
+//            outputFileName = "${"Yunke_SDK"}_${variant.versionName}.apk"
+//        }
+//    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+
+    dexOptions {
+
+        javaMaxHeapSize "4g"
+
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+//virtualApk {
+//    packageId = 0x6f             // 用于定义每个插件的资源id，多个插件间的资源Id前缀要不同，避免资源合并时产生冲突
+//    targetHost='../YunKe_Android_Host/app' // 指明宿主工程的应用模块，插件编译时需要获取宿主的一些信息，比如mapping文件、依赖的SDK版本信息、R资源文件，一定不能填错，否则在编译插件时会提示找不到宿主工程。
+//    applyHostMapping = true      // 表示插件是否开启apply mapping功能。当宿主开启混淆时，一般情况下插件就要开启applyHostMapping功能。因为宿主混淆后函数名可能有fun()变为a()，插件使用宿主混淆后的mapping映射来编译插件包，这样插件调用fun()时实际调用的是a()，才能找到正确的函数调用。
+//    forceUseHostDependences = true //强制使用宿主工程的依赖--宿主和插件工程依赖必须相同（android:support）
+//
+//}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+
+//    implementation "com.android.support:appcompat-v7:${androidVersion.supportLib}"
+//    implementation "com.android.support:support-v4:${androidVersion.supportLib}"
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+//    implementation "com.android.support:design:${androidVersion.supportLib}"
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-arm64:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.8'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.8.8'
+
+    //云客
+//    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
+//    api 'com.squareup.okhttp3:okhttp:3.3.1'
+//    api 'com.google.code.gson:gson:2.6.2'
+//    api 'com.github.bumptech.glide:glide:3.7.0'
+//    api files('libs/okhttp-3.3.1.jar')
+//    api files('libs/okhttp-urlconnection-3.2.0.jar')
+//    api files('libs/gson-2.6.2.jar')
+//    api files('libs/glide-3.7.0.jar')
+//    api files('libs/okio-1.8.0.jar')
+    api 'com.android.support:multidex:1.0.3'
+
+
+
+
+    //腾讯
+//    api files('libs/android-query-full.0.26.7.jar')
+//    api files('libs/GDTUnionSDK.4.22.584.min.jar')
+    //头条
+    api(name: 'open_ad_sdk', ext: 'aar')
+    api(name: 'android-gif-drawable-1.2.6', ext: 'aar')
+    api(name: 'circleimageview-2.2.0', ext: 'aar')
+    //    api(name: 'LayoutManagerGroup', ext: 'aar')
+    //    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.6'
+    //    implementation "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4"
+}

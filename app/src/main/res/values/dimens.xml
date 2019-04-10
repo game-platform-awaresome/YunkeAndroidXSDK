@@ -1,0 +1,9 @@
+<resources>
+    <!--边距-->
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="title_bar_height">50dp</dimen>
+    <dimen name="layout_horizontal_padding">20dp</dimen>
+    <dimen name="layout_horizontal_margin">20dp</dimen>
+    <!--titleBar中间文字-->
+    <dimen name="text_size_title_center">18sp</dimen>
+</resources>

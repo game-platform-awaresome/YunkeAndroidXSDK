@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--注意：这是正常recycleview中item-->
+    <TextView
+        android:id="@+id/infoflow_listview_ad_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"/>
+
+    <!--注意：广告view的container-->
+    <FrameLayout
+        android:id="@+id/infoflow_listview_ad_container"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+</RelativeLayout>

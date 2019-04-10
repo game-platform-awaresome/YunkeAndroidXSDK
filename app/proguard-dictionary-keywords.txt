@@ -1,0 +1,64 @@
+#-applymapping filename 指定重用一个已经写好了的map文件作为新旧元素名的映射。
+#-obfuscationdictionary filename 指定一个文本文件用来生成混淆后的名字。
+#-classobfuscationdictionary filename 指定一个混淆类名的字典
+#-packageobfuscationdictionary filename 指定一个混淆包名的字典
+#-overloadaggressively 混淆的时候大量使用重载，多个方法名使用同一个混淆名（慎用）
+
+# 查找字典文件的格式：一行一个单词，空行忽略，重复忽略
+# 这里巧妙地使用java中的关键字作字典，混淆之后的代码更加不利于阅读
+#
+# This obfuscation dictionary contains reserved Java keywords. They can't
+# be used in Java source files, but they can be used in compiled class files.
+# Note that this hardly improves the obfuscation. Decent decompilers can
+# automatically replace reserved keywords, and the effect can fairly simply be
+# undone by obfuscating again with simpler names.
+# Usage: java -jar proguard.jar ..... -obfuscationdictionary keywords.txt
+#
+do
+if
+for
+int
+new
+try
+byte
+case
+char
+else
+goto
+long
+this
+void
+break
+catch
+class
+const
+final
+float
+short
+super
+throw
+while
+double
+import
+native
+public
+return
+static
+switch
+throws
+boolean
+default
+extends
+finally
+package
+private
+abstract
+continue
+strictfp
+volatile
+interface
+protected
+transient
+implements
+instanceof
+synchronized

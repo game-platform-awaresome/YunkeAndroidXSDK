@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <Button
+        android:id="@+id/btn_banner_native"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="banner广告(原生)" />
+
+    <!-- BannerView的Container -->
+
+    <FrameLayout
+        android:id="@+id/banner_container"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <!--<com.shykad.yunke.sdk.ui.widget.banner.YunKeBanner-->
+            <!--android:id="@+id/banner_container"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="200dp"-->
+            <!--style="@style/BannerDefaultStyle"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_marginBottom="10px"-->
+            <!--app:banner_pageChangeDuration="2000"-->
+            <!--app:banner_pointAutoPlayAble="true"-->
+            <!--app:banner_pointContainerBackground="@android:color/transparent"-->
+            <!--app:banner_pointDrawable="@drawable/yunke_banner_selector_point_hollow"-->
+            <!--app:banner_pointTopBottomMargin="15dp"-->
+            <!--app:banner_transitionEffect="alpha"/>-->
+    </FrameLayout>
+
+</LinearLayout>
