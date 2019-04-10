@@ -203,13 +203,28 @@ public class VideoAdActivity extends PermissionActivity{
 
     }
 
-    /** 需要监听用户对返回按钮的控制，并且销毁视频广告实例 */
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
-            VideoEngine.getInstance(VideoAdActivity.this).onDestory();
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
+    protected void onResume() {
+        super.onResume();
+        VideoEngine.getInstance(VideoAdActivity.this).onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        VideoEngine.getInstance(VideoAdActivity.this).onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        VideoEngine.getInstance(VideoAdActivity.this).onStop();
+    }
+
+    /** 销毁视频广告实例 */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        VideoEngine.getInstance(VideoAdActivity.this).onDestory();
     }
 }
