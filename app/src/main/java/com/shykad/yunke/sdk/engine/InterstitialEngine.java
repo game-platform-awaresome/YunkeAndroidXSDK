@@ -34,7 +34,7 @@ public class InterstitialEngine {
     private TTAdNative mTTAdNative;
     private InterstitialAD mTXAdNative;
 
-    private static InterstitialEngine instance;
+    private volatile static InterstitialEngine instance;
 
     private InterstitialEngine(){
 

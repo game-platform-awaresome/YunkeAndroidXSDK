@@ -20,7 +20,7 @@ public class VideoEngine {
     private Object response;
     private GetAdResponse.AdCotent adCotent;
     private static Activity mContext;
-    private static VideoEngine instance;
+    private volatile static VideoEngine instance;
     private VideoAdCallBack videoAdCallBack;
     private YunkeVideoView videoView;
 

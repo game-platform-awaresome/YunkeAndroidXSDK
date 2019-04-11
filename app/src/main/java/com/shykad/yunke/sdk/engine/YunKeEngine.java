@@ -31,7 +31,7 @@ public class YunKeEngine {
 
     private static Context mContext;
 
-    private static YunKeEngine instance;
+    private volatile static YunKeEngine instance;
 
     private YunKeEngine(){
 

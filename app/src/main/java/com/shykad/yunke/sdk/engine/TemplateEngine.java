@@ -51,7 +51,7 @@ public class TemplateEngine {
     private Object response;
     private GetAdResponse.AdCotent adCotent;
     private static Activity mContext;
-    private static TemplateEngine instance;
+    private volatile static TemplateEngine instance;
     private NativeExpressAD nativeExpressAD;
     private NativeExpressADView nativeExpressADView;
     private TTAdNative mTTAdNative;

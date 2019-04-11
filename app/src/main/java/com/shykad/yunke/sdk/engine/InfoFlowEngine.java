@@ -51,7 +51,7 @@ public class InfoFlowEngine {
     private Object response;
     private GetAdResponse.AdCotent adCotent;
     private static Activity mContext;
-    private static InfoFlowEngine instance;
+    private volatile static InfoFlowEngine instance;
     private NativeExpressAD mADManager;
     private YunkeTemplateView templateView;
     private TTAdNative mTTAdNative;
